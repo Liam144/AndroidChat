@@ -1,4 +1,4 @@
-package edu.udistrital.android.androidchat;
+package edu.udistrital.android.androidchat.login;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import edu.udistrital.android.androidchat.R;
 
 public class LoginActivity extends AppCompatActivity {
 
