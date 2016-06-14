@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,18 +40,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-    }
 
-    @OnClick(R.id.btnSignin)
-    public void handleSignin() {
-        Log.e("AndroidChat", inputEmail.getText().toString());
-    }
-
-    @OnClick(R.id.btnSignup)
-    public void handleSignup() {
-        Log.e("AndroidChat", inputEmail.getText().toString());
+        loginPresenter = new LoginPresenterImplementation(this);
+        //loginPresenter.checkForAuthenticateUser();
 
     }
+
 
     @Override
     public void enableInputs() {
@@ -82,6 +77,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @OnClick(R.id.btnSignin)
     @Override
     public void handleSignIn() {
+        Toast.makeText(getApplicationContext(), "click paso por el SignIn", Toast.LENGTH_LONG).show();
         loginPresenter.validateLogin(inputEmail.getText().toString(),
                                      inputPassword.getText().toString());
     }
