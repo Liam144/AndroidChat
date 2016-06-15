@@ -40,10 +40,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         ButterKnife.bind(this);
 
        loginPresenter = new LoginPresenterImplementation(this);
-       loginPresenter.checkForAuthenticateUser();
-
+       //loginPresenter.onCreate();
+       //loginPresenter.checkForAuthenticateUser();
     }
 
+    @Override
+    protected void onDestroy() {
+        loginPresenter.onDestroy();
+        super.onDestroy();
+    }
 
     @Override
     public void enableInputs() {
