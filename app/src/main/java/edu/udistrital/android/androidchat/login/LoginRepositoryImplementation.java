@@ -4,6 +4,10 @@ package edu.udistrital.android.androidchat.login;
 
 import android.util.Log;
 
+import com.firebase.client.AuthData;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
 import edu.udistrital.android.androidchat.domain.FirebaseHelper;
 import edu.udistrital.android.androidchat.lib.EventBus;
 import edu.udistrital.android.androidchat.lib.GreenRobotEventBus;
@@ -15,9 +19,14 @@ import edu.udistrital.android.androidchat.login.events.LoginEvent;
 public class LoginRepositoryImplementation implements LoginRepository {
 
     private FirebaseHelper helper;
+    private Firebase dataReference;
+    private Firebase myUserReference;
+
 
     public LoginRepositoryImplementation() {
         this.helper = FirebaseHelper.getInstance();
+        this.dataReference = helper.getDataReference();
+        this.myUserReference = helper.getMyUserReference();
     }
 
     @Override
@@ -27,7 +36,18 @@ public class LoginRepositoryImplementation implements LoginRepository {
 
     @Override
     public void signIn(String email, String password) {
-       postEvent(LoginEvent.onSignInSuccess);
+        dataReference.authWithPassword(email,password, new Firebase.AuthResultHandler() {
+            @Override
+            public void onAuthenticated(AuthData authData) {
+                postEvent(LoginEvent.onSignInSuccess);
+            }
+
+            @Override
+            public void onAuthenticationError(FirebaseError firebaseError) {
+                postEvent(LoginEvent.onSignInError, firebaseError.getMessage());
+            }
+        });
+
     }
 
     @Override

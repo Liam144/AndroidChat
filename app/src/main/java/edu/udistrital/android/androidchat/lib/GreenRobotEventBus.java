@@ -1,10 +1,12 @@
 package edu.udistrital.android.androidchat.lib;
 
-/**
+import android.util.Log;
+
+/*
  * Created by Karol on 14/06/2016.
  */
 public class GreenRobotEventBus implements EventBus {
-    org.greenrobot.eventbus.EventBus eventBus;
+    de.greenrobot.event.EventBus eventBus;
 
     private static class SingletonHolder{
         private static final GreenRobotEventBus INSTANCE = new GreenRobotEventBus();
@@ -14,21 +16,20 @@ public class GreenRobotEventBus implements EventBus {
         return SingletonHolder.INSTANCE;
     }
 
-    public GreenRobotEventBus() {
-        this.eventBus = org.greenrobot.eventbus.EventBus.getDefault();
+    public GreenRobotEventBus(){
+        eventBus = de.greenrobot.event.EventBus.getDefault();
     }
 
-    @Override
-    public void register(Object subscriber) {
+    public void register(Object subscriber){
         eventBus.register(subscriber);
     }
 
-    @Override
+
     public void unregister(Object subscriber) {
         eventBus.unregister(subscriber);
     }
 
-    @Override
+
     public void post(Object event) {
         eventBus.post(event);
     }
