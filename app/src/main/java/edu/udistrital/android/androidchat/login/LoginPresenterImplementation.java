@@ -5,6 +5,7 @@ import android.util.Log;
 import edu.udistrital.android.androidchat.lib.EventBus;
 import edu.udistrital.android.androidchat.lib.GreenRobotEventBus;
 import edu.udistrital.android.androidchat.login.events.LoginEvent;
+import edu.udistrital.android.androidchat.login.ui.LoginView;
 
 /*
  * Created by wisuarez on 14/06/2016.
@@ -88,7 +89,7 @@ public class LoginPresenterImplementation implements LoginPresenter {
             loginView.hideProgress();
             loginView.enableInputs();
         }
-        Log.e("LoginPresenterImplementation","onFailedToRecoverSession");
+
     }
 
     private void onSignInSuccess(){

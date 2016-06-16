@@ -1,4 +1,4 @@
-package edu.udistrital.android.androidchat.login;
+package edu.udistrital.android.androidchat.login.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,13 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.udistrital.android.androidchat.R;
 import edu.udistrital.android.androidchat.contactlist.ContactListActivity;
+import edu.udistrital.android.androidchat.login.LoginPresenter;
+import edu.udistrital.android.androidchat.login.LoginPresenterImplementation;
+import edu.udistrital.android.androidchat.login.ui.LoginView;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 

@@ -1,4 +1,4 @@
-package edu.udistrital.android.androidchat.login;
+package edu.udistrital.android.androidchat.login.ui;
 
 /**
  * Created by wisuarez on 13/06/2016.

@@ -9,6 +9,8 @@ import com.firebase.client.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.udistrital.android.androidchat.entities.User;
+
 /**
  * Created by wisuarez on 13/06/2016.
  */
@@ -35,6 +37,7 @@ public class FirebaseHelper {
         return dataReference;
     }
 
+    //obtiene usuario de Firebase registrado
     public String getAuthUserEmail(){
         AuthData authData = dataReference.getAuth();
         String email = null;
@@ -96,7 +99,7 @@ public class FirebaseHelper {
     }
 
     public void signOff(){
-        notifyContactsOfConnectionChange(false,true);
+        notifyContactsOfConnectionChange(User.OFFLINE,true);
     }
 
     public void notifyContactsOfConnectionChange(final boolean online, final boolean signoff) {
