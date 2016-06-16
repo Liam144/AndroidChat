@@ -6,7 +6,7 @@ import android.util.Log;
  * Created by Karol on 14/06/2016.
  */
 public class GreenRobotEventBus implements EventBus {
-    de.greenrobot.event.EventBus eventBus;
+    org.greenrobot.eventbus.EventBus eventBus;
 
     private static class SingletonHolder{
         private static final GreenRobotEventBus INSTANCE = new GreenRobotEventBus();
@@ -17,7 +17,7 @@ public class GreenRobotEventBus implements EventBus {
     }
 
     public GreenRobotEventBus(){
-        eventBus = de.greenrobot.event.EventBus.getDefault();
+        eventBus = org.greenrobot.eventbus.EventBus.getDefault();
     }
 
     public void register(Object subscriber){
