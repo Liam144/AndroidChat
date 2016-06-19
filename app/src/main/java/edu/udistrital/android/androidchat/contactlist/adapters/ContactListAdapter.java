@@ -13,6 +13,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.udistrital.android.androidchat.R;
+import edu.udistrital.android.androidchat.domain.AvatarHelper;
 import edu.udistrital.android.androidchat.entities.User;
 import edu.udistrital.android.androidchat.lib.ImageLoader;
 
@@ -52,7 +53,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         holder.txtStatus.setText(status);
         holder.txtStatus.setTextColor(color);
 
-        imageLoader.load(holder.imgAvatar, "");
+        imageLoader.load(holder.imgAvatar, AvatarHelper.getAvatarUrl(email));
     }
 
     @Override
