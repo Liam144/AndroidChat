@@ -65,7 +65,7 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
         setSupportActionBar(toolbar);
     }
 
-    /*
+
     @Override
     protected void onDestroy() {
         presenter.onDestroy();
@@ -83,7 +83,7 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
         super.onPause();
         presenter.onPause();
     }
-*/
+
     @OnClick(R.id.fab)
     public void addContact(){
 
