@@ -1,5 +1,7 @@
 package edu.udistrital.android.androidchat.domain;
 
+import android.util.Log;
+
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -70,7 +72,7 @@ public class FirebaseHelper {
     }
 
     public Firebase getOneContactReference(String mainEmail, String childEmail){
-        String childkey = childEmail.replace(".","-");
+        String childkey = childEmail.replace(".","_");
         return getUserReference(mainEmail).child(CONTACTS_PATH).child(childkey);
     }
 

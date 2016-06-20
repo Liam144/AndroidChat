@@ -1,5 +1,7 @@
 package edu.udistrital.android.androidchat.contactlist;
 
+import android.util.Log;
+
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
@@ -36,8 +38,8 @@ public class ContactListRepositoryImplementation implements ContactListRepositor
     @Override
     public void removeContact(String email) {
         String currentUserEmail = helper.getAuthUserEmail();
-        helper.getOneContactReference(currentUserEmail, email);
-        helper.getOneContactReference(email, currentUserEmail);
+        helper.getOneContactReference(currentUserEmail, email).removeValue();
+        helper.getOneContactReference(email, currentUserEmail).removeValue();
     }
 
     @Override

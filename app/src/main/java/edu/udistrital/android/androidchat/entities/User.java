@@ -38,4 +38,14 @@ public class User {
     public void setContacts(Map<String, Boolean> contacts) {
         this.contacts = contacts;
     }
+
+    public boolean equals(Object obj){
+        boolean equal = false;
+
+        if (obj instanceof User){
+            User recipe = (User)obj;
+            equal = this.email.equals(recipe.getEmail());
+        }
+        return equal;
+    }
 }

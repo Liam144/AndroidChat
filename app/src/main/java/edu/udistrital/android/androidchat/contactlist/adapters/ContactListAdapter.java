@@ -2,6 +2,7 @@ package edu.udistrital.android.androidchat.contactlist.adapters;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,28 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         return contactList.size();
     }
 
+    public void add(User user) {
+        if (!contactList.contains(user)){
+            contactList.add(user);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void update(User user) {
+        if (contactList.contains(user)){
+            int index = contactList.indexOf(user);
+            contactList.set(index, user);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void remove(User user) {
+        if (contactList.contains(user)){
+            contactList.remove(user);
+            notifyDataSetChanged();
+        }
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.imgAvatar)
@@ -78,8 +101,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
             this.view = itemView;
         }
 
-        public void setClickListener(final User user, final OnItemClickListener listener){
-
+        private void setClickListener(final User user, final OnItemClickListener listener){
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
