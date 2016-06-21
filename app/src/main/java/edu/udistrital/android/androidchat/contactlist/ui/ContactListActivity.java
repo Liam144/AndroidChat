@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.udistrital.android.androidchat.R;
 import edu.udistrital.android.androidchat.addcontact.ui.AddContactFragment;
+import edu.udistrital.android.androidchat.chat.ui.ChatActivity;
 import edu.udistrital.android.androidchat.contactlist.ContactListPresenter;
 import edu.udistrital.android.androidchat.contactlist.ContactListPresenterImplementation;
 import edu.udistrital.android.androidchat.contactlist.adapters.ContactListAdapter;
@@ -69,7 +70,7 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                     | Intent.FLAG_ACTIVITY_NEW_TASK
                     | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            return super.onOptionsItemSelected(item);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -104,8 +105,9 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
 
     @Override
     protected void onPause() {
-        super.onPause();
         presenter.onPause();
+        super.onPause();
+
     }
 
     @OnClick(R.id.fab)
@@ -130,7 +132,10 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
 
     @Override
     public void onItemClick(User user) {
-        Toast.makeText(getApplicationContext(),user.getEmail(),Toast.LENGTH_LONG).show();
+       Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra(ChatActivity.EMAIL_KEY, user.getEmail());
+        intent.putExtra(ChatActivity.ONLINE_KEY, user.isOnline());
+        startActivity(intent);
     }
 
     @Override
