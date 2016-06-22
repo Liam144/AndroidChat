@@ -36,4 +36,14 @@ public class ChatMessage {
     public void setSentByMe(boolean sentByMe) {
         this.sentByMe = sentByMe;
     }
+
+    public boolean equals(Object obj){
+        boolean equal = false;
+
+        if (obj instanceof ChatMessage){
+            ChatMessage msg = (ChatMessage)obj;
+            equal = this.sender.equals(msg.getSender()) && this.msg.equals(msg.getMsg())&& this.sentByMe == msg.sentByMe;
+        }
+        return equal;
+    }
 }
